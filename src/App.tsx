@@ -10,7 +10,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Landing from "./pages/Landing";
 import Work from "./pages/Work";
-import About from "./pages/About";
 import Navigation from "./components/Navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -44,7 +43,6 @@ function PageTransition() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<AnimatedPage><Landing /></AnimatedPage>} />
         <Route path="/work" element={<AnimatedPage><Work /></AnimatedPage>} />
-        <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
       </Routes>
     </AnimatePresence>
   );

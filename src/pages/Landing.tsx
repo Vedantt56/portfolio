@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
 import { MoveRight, Github, Linkedin, Twitter, Instagram, Mail } from "lucide-react";
 import About from "./About";
+import Achievements from "../components/Achievements";
 
 export default function Landing() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -193,10 +194,10 @@ export default function Landing() {
       <About />
 
       {/* Marquee Section */}
-      <section className="w-full bg-[var(--color-bg-primary)] overflow-hidden py-12 md:py-24 text-white/5 uppercase font-sans font-black italic whitespace-nowrap flex flex-col gap-4 select-none pointer-events-none">
+      <section className="w-full bg-[var(--color-bg-primary)] overflow-hidden py-8 md:py-16 text-white/5 uppercase font-sans font-black italic whitespace-nowrap flex flex-col gap-4 select-none pointer-events-none">
         
         {/* Row 1: Left to Right */}
-        <div className="flex w-max animate-marquee-right text-[4rem] md:text-[8rem] lg:text-[10rem] leading-[0.8] tracking-tighter">
+        <div className="flex w-max animate-marquee-right text-[2.5rem] md:text-[5rem] lg:text-[6rem] leading-[0.8] tracking-tighter">
           {[...Array(4)].map((_, i) => (
             <div key={i} className="flex shrink-0 items-center">
                <span className="px-4 md:px-8">LARAVEL</span><span className="text-[0.4em] mb-4 text-white/20 px-2">&#9679;</span>
@@ -209,7 +210,7 @@ export default function Landing() {
         </div>
 
         {/* Row 2: Right to Left */}
-        <div className="flex w-max animate-marquee-left text-[4rem] md:text-[8rem] lg:text-[10rem] leading-[0.8] tracking-tighter ml-[-15vw]">
+        <div className="flex w-max animate-marquee-left text-[2.5rem] md:text-[5rem] lg:text-[6rem] leading-[0.8] tracking-tighter ml-[-15vw]">
           {[...Array(4)].map((_, i) => (
             <div key={i} className="flex shrink-0 items-center">
                <span className="px-4 md:px-8">TYPESCRIPT</span><span className="text-[0.4em] mb-4 text-white/20 px-2">&#9679;</span>
@@ -285,6 +286,9 @@ export default function Landing() {
            </div>
         </div>
       </section>
+
+      {/* Achievements Section */}
+      <Achievements />
 
       {/* Ending Section */}
       <section ref={endRef} className="relative min-h-[80vh] w-full flex items-stretch bg-[#080808] z-20 text-[var(--color-accent-cream)] border-t border-white/5">

@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 const navItems = [
   { path: "/", label: "Home" },
   { path: "/work", label: "Work" },
-  { path: "/about", label: "About" },
 ];
 
 export default function Navigation() {
