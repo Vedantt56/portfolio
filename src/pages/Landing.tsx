@@ -1,0 +1,353 @@
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
+import { MoveRight, Github, Linkedin, Twitter, Instagram, Mail } from "lucide-react";
+import About from "./About";
+
+export default function Landing() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const nameRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const tagsRef = useRef<HTMLDivElement>(null);
+  
+  const endRef = useRef<HTMLDivElement>(null);
+  const socialNavRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Hero Intro Animation
+      const tl = gsap.timeline();
+      
+      tl.from(".hero-text-line", {
+        yPercent: 100,
+        opacity: 0,
+        rotateZ: 5,
+        duration: 1.5,
+        stagger: 0.15,
+        ease: "power4.out",
+        delay: 0.2
+      })
+      .from(subtitleRef.current, {
+        opacity: 0,
+        y: 20,
+        duration: 1,
+        ease: "power3.out"
+      }, "-=1")
+      .from(tagsRef.current?.children || [], {
+        opacity: 0,
+        y: 10,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out"
+      }, "-=0.8");
+
+      // Hero Scroll Animation (Parallax)
+      gsap.to(nameRef.current, {
+        y: 150,
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        }
+      });
+      
+      // Typography section reveal
+      gsap.from(".typography-text", {
+        yPercent: 120,
+        opacity: 0,
+        rotateZ: 3,
+        duration: 1.5,
+        stagger: 0.1,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".typography-section",
+          start: "top 80%",
+        }
+      });
+      
+      // Featured works text reveal
+      gsap.from(".featured-text-char", {
+        yPercent: 120,
+        opacity: 0,
+        stagger: 0.03,
+        duration: 1,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".featured-works-section",
+          start: "top 85%",
+        }
+      });
+
+      // End section reveal
+      gsap.from(".end-text", {
+        yPercent: 50,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: endRef.current,
+          start: "top 80%",
+        }
+      });
+
+      // Social nav reveal
+      gsap.to(socialNavRef.current, {
+        opacity: 1,
+        x: 0,
+        pointerEvents: "auto",
+        duration: 0.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "bottom 90%", // appear after hero begins to leave
+          toggleActions: "play none none reverse",
+        }
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <main className="w-full bg-[var(--color-bg-primary)]">
+      {/* Fixed Social Nav */}
+      <div ref={socialNavRef} className="fixed right-6 bottom-1/2 translate-y-1/2 z-50 flex flex-col gap-4 opacity-0 translate-x-12 pointer-events-none">
+        <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
+          <Github className="w-5 h-5" />
+        </a>
+        <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
+          <Linkedin className="w-5 h-5" />
+        </a>
+        <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
+          <Twitter className="w-5 h-5" />
+        </a>
+        <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
+          <Instagram className="w-5 h-5" />
+        </a>
+        <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
+          <Mail className="w-5 h-5" />
+        </a>
+      </div>
+
+      {/* Hero Section */}
+      <section ref={heroRef} className="relative h-screen w-full flex flex-col justify-end pb-24 px-6 md:px-12 overflow-hidden">
+        {/* Grain Overlay */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-20" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")', backgroundSize: '250px 250px' }}></div>
+        
+        <div className="max-w-[1920px] mx-auto w-full z-10 flex flex-col gap-6">
+          <h1 ref={nameRef} className="flex flex-col text-7xl md:text-[11rem] lg:text-[14rem] leading-[0.85] font-display font-bold tracking-tighter uppercase text-[var(--color-accent-cream)]">
+            <div className="overflow-hidden pb-4"><span className="hero-text-line block">VEDANT</span></div>
+            <div className="overflow-hidden pb-4"><span className="hero-text-line block pl-[8vw] md:pl-[12vw] text-[var(--color-accent-orange)]">VAIBHAV</span></div>
+          </h1>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mt-4">
+            <p ref={subtitleRef} className="text-xl md:text-3xl max-w-xl font-sans font-light tracking-wide text-[var(--color-accent-cream)]">
+              Creative Developer / CS Engineer / Building immersive digital experiences
+            </p>
+            <div ref={tagsRef} className="flex flex-wrap gap-4 text-sm md:text-base font-medium font-sans text-[var(--color-accent-gray)] uppercase tracking-widest">
+              <span>Frontend</span>
+              <span>•</span>
+              <span>AI</span>
+              <span>•</span>
+              <span>Cloud</span>
+              <span>•</span>
+              <span>Motion Design</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Typography Section */}
+      <section className="typography-section relative w-full py-32 md:py-48 px-6 md:px-12 bg-[#312015] z-10 flex flex-col items-center justify-center overflow-hidden">
+        <div className="max-w-[1920px] mx-auto w-full text-center flex flex-col items-center relative">
+          
+          <div className="absolute top-0 left-0 md:left-24 text-left hidden md:block">
+            <p className="typography-text text-[#e3dcd1] font-sans font-bold text-sm tracking-widest uppercase mb-1">Purposeful</p>
+            <p className="typography-text text-[#e3dcd1] font-sans font-bold text-sm tracking-widest uppercase">Design</p>
+          </div>
+
+          <div className="overflow-hidden">
+            <h2 className="typography-text text-[#e3dcd1] text-[12vw] leading-[0.8] font-display font-bold tracking-tighter uppercase m-0">
+              BUILDING
+            </h2>
+          </div>
+          <div className="overflow-hidden">
+            <h2 className="typography-text text-[#e3dcd1] text-[15vw] leading-[0.8] font-display font-bold tracking-tighter uppercase m-0">
+              WEBSITES
+            </h2>
+          </div>
+          <div className="overflow-hidden flex items-start">
+             <div className="hidden md:block text-left relative mt-4 mr-8">
+                <p className="typography-text text-[#e3dcd1] font-sans font-bold text-sm tracking-widest uppercase leading-tight">Elevating</p>
+                <p className="typography-text text-[#e3dcd1] font-sans font-bold text-sm tracking-widest uppercase leading-tight">Aesthetics</p>
+             </div>
+             <h2 className="typography-text text-[#e3dcd1] text-[12vw] leading-[0.8] font-display font-bold tracking-tighter uppercase m-0">
+                WITH MEANING
+             </h2>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <About />
+
+      {/* Marquee Section */}
+      <section className="w-full bg-[var(--color-bg-primary)] overflow-hidden py-12 md:py-24 text-white/5 uppercase font-sans font-black italic whitespace-nowrap flex flex-col gap-4 select-none pointer-events-none">
+        
+        {/* Row 1: Left to Right */}
+        <div className="flex w-max animate-marquee-right text-[4rem] md:text-[8rem] lg:text-[10rem] leading-[0.8] tracking-tighter">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="flex shrink-0 items-center">
+               <span className="px-4 md:px-8">LARAVEL</span><span className="text-[0.4em] mb-4 text-white/20 px-2">&#9679;</span>
+               <span className="px-4 md:px-8">PHP</span><span className="text-[0.4em] mb-4 text-white/20 px-2">&#9679;</span>
+               <span className="px-4 md:px-8">MYSQL</span><span className="text-[0.4em] mb-4 text-white/20 px-2">&#9679;</span>
+               <span className="px-4 md:px-8">REACT</span><span className="text-[0.4em] mb-4 text-white/20 px-2">&#9679;</span>
+               <span className="px-4 md:px-8">NEXT.JS</span><span className="text-[0.4em] mb-4 text-white/20 px-2">&#9679;</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Row 2: Right to Left */}
+        <div className="flex w-max animate-marquee-left text-[4rem] md:text-[8rem] lg:text-[10rem] leading-[0.8] tracking-tighter ml-[-15vw]">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="flex shrink-0 items-center">
+               <span className="px-4 md:px-8">TYPESCRIPT</span><span className="text-[0.4em] mb-4 text-white/20 px-2">&#9679;</span>
+               <span className="px-4 md:px-8">JAVASCRIPT</span><span className="text-[0.4em] mb-4 text-white/20 px-2">&#9679;</span>
+               <span className="px-4 md:px-8">NODE.JS</span><span className="text-[0.4em] mb-4 text-white/20 px-2">&#9679;</span>
+               <span className="px-4 md:px-8">EXPRESS</span><span className="text-[0.4em] mb-4 text-white/20 px-2">&#9679;</span>
+               <span className="px-4 md:px-8">MONGODB</span><span className="text-[0.4em] mb-4 text-white/20 px-2">&#9679;</span>
+               <span className="px-4 md:px-8">DOCKER</span><span className="text-[0.4em] mb-4 text-white/20 px-2">&#9679;</span>
+               <span className="px-4 md:px-8">GIT</span><span className="text-[0.4em] mb-4 text-white/20 px-2">&#9679;</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Featured Works Section (Replaces 3D Gallery) */}
+      <section className="featured-works-section bg-[#f2efe9] text-[#111111] pt-24 pb-32 z-20 relative">
+        <div className="px-6 md:px-12 max-w-[1920px] mx-auto">
+           <div className="w-full overflow-hidden flex justify-between tracking-tighter">
+              <h1 className="text-[13vw] md:text-[14vw] leading-[0.8] font-display font-bold uppercase w-full flex justify-between">
+                {"FEATURED WORKS".split('').map((char, i) => (
+                  <span key={i} className="featured-text-char inline-block">{char === ' ' ? '\u00A0' : char}</span>
+                ))}
+              </h1>
+           </div>
+           
+           <div className="w-full border-t border-[#111111] mt-8 pt-4 flex flex-col md:flex-row justify-between items-start md:items-center mb-16">
+              <p className="font-sans font-bold text-sm md:text-base uppercase tracking-widest mb-4 md:mb-0">
+                 Design Insights
+              </p>
+              <div className="flex flex-wrap gap-3">
+                 {["Conceptual", "Expressive", "Immersive"].map(tag => (
+                   <span key={tag} className="border border-[#111111] bg-[#111111] text-[#f2efe9] rounded-full px-4 py-1 text-xs uppercase tracking-widest font-bold">
+                      {tag}
+                   </span>
+                 ))}
+              </div>
+           </div>
+
+           <div className="flex flex-col gap-6 w-full">
+              <Link to="/work" className="block group relative w-full h-[50vh] md:h-[80vh] overflow-hidden cursor-pointer bg-[#e0ded8]">
+                 <img src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover mix-blend-multiply opacity-90 transition-transform duration-1000 group-hover:scale-105" alt="Home in a Hot Pot" />
+                 <div className="absolute inset-0 bg-black/5 transition-opacity duration-500 group-hover:opacity-0" />
+              </Link>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                 <Link to="/work" className="block group relative w-full h-[50vh] md:h-[60vh] overflow-hidden cursor-pointer bg-[#262626]">
+                    <img src="https://images.unsplash.com/photo-1622322300063-e380e2f5b4de?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover grayscale opacity-60 mix-blend-overlay transition-transform duration-1000 group-hover:scale-105" alt="Flow" />
+                    <div className="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end text-white z-10 bg-gradient-to-t from-black/80 to-transparent">
+                       <span className="font-display font-bold text-5xl">02<span className="text-2xl ml-4 tracking-widest uppercase">Flow</span></span>
+                       <div className="flex flex-wrap gap-2 w-1/2 justify-end">
+                          {["Art Direction", "Concept", "Design"].map(t => (
+                             <span key={t} className="bg-white text-black font-sans text-[10px] md:text-xs px-2 py-1 md:px-3 rounded-full font-bold uppercase tracking-widest">{t}</span>
+                          ))}
+                       </div>
+                    </div>
+                 </Link>
+
+                 <Link to="/work" className="block group relative w-full h-[50vh] md:h-[60vh] overflow-hidden cursor-pointer bg-[#e1e2d9]">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-105" alt="Community" />
+                    <div className="absolute top-0 left-0 w-full p-8 text-black z-10">
+                        <span className="font-sans font-bold text-xs tracking-widest uppercase border border-black rounded-full px-4 py-2 bg-white/50 backdrop-blur-sm">Find</span>
+                        <h3 className="font-display text-5xl mt-4 max-w-[50%]">YOUR COMMUNITY</h3>
+                    </div>
+                 </Link>
+              </div>
+           </div>
+
+           <div className="mt-24 flex justify-center">
+              <Link to="/work" className="group relative inline-flex items-center gap-4 text-[#111111] overflow-hidden border border-[#111111] rounded-full px-8 py-4 md:px-12 md:py-6 text-lg md:text-xl font-display font-bold uppercase tracking-widest hover:bg-[#111111] hover:text-[#f2efe9] transition-colors duration-500">
+                 <span>View All Works</span>
+                 <span className="w-2 h-2 rounded-full bg-[var(--color-accent-orange)] group-hover:scale-150 transition-transform duration-500"></span>
+              </Link>
+           </div>
+        </div>
+      </section>
+
+      {/* Ending Section */}
+      <section ref={endRef} className="relative min-h-[80vh] w-full flex items-stretch bg-[#080808] z-20 text-[var(--color-accent-cream)] border-t border-white/5">
+        <div className="max-w-[1920px] mx-auto w-full grid grid-cols-1 md:grid-cols-2">
+          
+          {/* Left Column */}
+          <div className="p-12 md:p-24 flex flex-col justify-between border-r border-white/5">
+            <div>
+              <p className="end-text font-sans font-bold text-[10px] tracking-[0.3em] text-gray-500 uppercase mb-8">
+                Contact
+              </p>
+              <h2 className="text-6xl md:text-[8vw] font-display font-bold uppercase leading-[0.85] tracking-tight mb-12">
+                <div className="overflow-hidden"><span className="block end-text">Let's</span></div>
+                <div className="overflow-hidden"><span className="block end-text">Work</span></div>
+                <div className="overflow-hidden"><span className="block end-text text-[#333333]">Together</span></div>
+              </h2>
+              <p className="end-text text-gray-400 font-sans text-lg md:text-xl max-w-md leading-relaxed font-light mb-16">
+                Have a project in mind? Looking for a partner to help build your next big idea? I'm always open to discussing new opportunities and challenges.
+              </p>
+              
+              <div className="end-text flex gap-4">
+                <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-transparent">
+                  <Github className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-transparent">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-transparent">
+                  <Twitter className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          {/* Right Column */}
+          <div className="p-12 md:p-24 flex flex-col justify-center">
+             <div className="w-full flex-1 border-b border-white/5 relative min-h-[30vh]">
+               <Mail className="absolute left-0 bottom-8 w-6 h-6 text-gray-500" />
+               <MoveRight className="absolute right-0 bottom-8 w-6 h-6 text-gray-500 -rotate-45" />
+             </div>
+             
+             <div className="pt-24 flex-1 flex flex-col justify-end">
+               <p className="font-sans font-bold text-[10px] tracking-[0.3em] text-gray-500 uppercase mb-4">
+                 Drop me a line
+               </p>
+               <a href="mailto:vedantvaibhav28@gmail.com" className="group text-3xl md:text-5xl font-display font-bold uppercase tracking-tight hover:text-[var(--color-accent-orange)] transition-colors mb-8 break-all">
+                  <span className="block">vedantvaibhav28</span>
+                  <span className="block text-gray-500 group-hover:text-[var(--color-accent-orange)]/70 transition-colors">@gmail.com</span>
+               </a>
+               
+               <button 
+                 onClick={() => navigator.clipboard.writeText('vedantvaibhav28@gmail.com')}
+                 className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors font-sans text-sm uppercase tracking-widest font-bold"
+               >
+                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                 </svg>
+                 Copy Address
+               </button>
+             </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}

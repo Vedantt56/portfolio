@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,800;0,900;1,800;1,900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Bebas Neue", sans-serif;
+
+  --color-bg-primary: #0b0b0b;
+  --color-bg-secondary: #111111;
+  --color-bg-tertiary: #151515;
+  --color-accent-cream: #d9d2c3;
+  --color-accent-orange: #c46b3c;
+  --color-accent-gray: #8f8f8f;
+  --color-white: #ffffff;
+}
+
+html, body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-accent-cream);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-accent-orange);
+  color: var(--color-bg-primary);
+}
+
+.clip-text {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 40s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 40s linear infinite;
+}

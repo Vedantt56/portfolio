@@ -1,0 +1,6 @@
+{
+  "name": "Cinematic Portfolio",
+  "description": "A highly cinematic, premium, animation-heavy portfolio website for a Computer Science engineering student focusing on motion design and immersive web experiences.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
