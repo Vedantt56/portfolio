@@ -1,10 +1,12 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
 import { MoveRight, Github, Linkedin, Twitter, Instagram, Mail } from "lucide-react";
 import About from "./About";
 import Achievements from "../components/Achievements";
+import ProjectDetailOverlay from "../components/ProjectDetailOverlay";
+import { projectsData, Project } from "../data/projectsData";
 
 export default function Landing() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -14,6 +16,17 @@ export default function Landing() {
   
   const endRef = useRef<HTMLDivElement>(null);
   const socialNavRef = useRef<HTMLDivElement>(null);
+
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+
+  const openProject = (id: number | string) => {
+    const proj = projectsData.find(p => p.id === id);
+    if (proj) {
+      setSelectedProject(proj);
+      setIsOverlayOpen(true);
+    }
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -115,10 +128,10 @@ export default function Landing() {
     <main className="w-full bg-[var(--color-bg-primary)]">
       {/* Fixed Social Nav */}
       <div ref={socialNavRef} className="fixed right-6 bottom-1/2 translate-y-1/2 z-50 flex flex-col gap-4 opacity-0 translate-x-12 pointer-events-none">
-        <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
+        <a href="https://github.com/Vedantt56" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
           <Github className="w-5 h-5" />
         </a>
-        <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
+        <a href="https://www.linkedin.com/in/vedant-vaibhav-b9b48b35b/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
           <Linkedin className="w-5 h-5" />
         </a>
         <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
@@ -127,7 +140,7 @@ export default function Landing() {
         <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
           <Instagram className="w-5 h-5" />
         </a>
-        <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vedantvaibhav28@gmail.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
           <Mail className="w-5 h-5" />
         </a>
       </div>
@@ -138,7 +151,7 @@ export default function Landing() {
         <div className="absolute inset-0 z-0 pointer-events-none opacity-20" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")', backgroundSize: '250px 250px' }}></div>
         
         <div className="max-w-[1920px] mx-auto w-full z-10 flex flex-col gap-6">
-          <h1 ref={nameRef} className="flex flex-col text-7xl md:text-[11rem] lg:text-[14rem] leading-[0.85] font-display font-bold tracking-tighter uppercase text-[var(--color-accent-cream)]">
+          <h1 ref={nameRef} className="flex flex-col text-7xl md:text-[11rem] lg:text-[14rem] leading-[0.85] font-display font-bold tracking-normal uppercase text-[var(--color-accent-cream)]">
             <div className="overflow-hidden pb-4"><span className="hero-text-line block">VEDANT</span></div>
             <div className="overflow-hidden pb-4"><span className="hero-text-line block pl-[8vw] md:pl-[12vw] text-[var(--color-accent-orange)]">VAIBHAV</span></div>
           </h1>
@@ -160,32 +173,44 @@ export default function Landing() {
       </section>
 
       {/* Typography Section */}
-      <section className="typography-section relative w-full py-32 md:py-48 px-6 md:px-12 bg-[#312015] z-10 flex flex-col items-center justify-center overflow-hidden">
+      <section className="typography-section relative w-full py-32 md:py-48 px-6 md:px-12 bg-[var(--color-bg-tertiary)] z-10 flex flex-col items-center justify-center overflow-hidden">
         <div className="max-w-[1920px] mx-auto w-full text-center flex flex-col items-center relative">
           
           <div className="absolute top-0 left-0 md:left-24 text-left hidden md:block">
-            <p className="typography-text text-[#e3dcd1] font-sans font-bold text-sm tracking-widest uppercase mb-1">Purposeful</p>
-            <p className="typography-text text-[#e3dcd1] font-sans font-bold text-sm tracking-widest uppercase">Design</p>
+            <p className="typography-text text-[var(--color-accent-cream)] font-sans font-bold text-sm tracking-widest uppercase mb-1">Purposeful</p>
+            <p className="typography-text text-[var(--color-accent-cream)] font-sans font-bold text-sm tracking-widest uppercase">Design</p>
           </div>
 
-          <div className="overflow-hidden">
-            <h2 className="typography-text text-[#e3dcd1] text-[12vw] leading-[0.8] font-display font-bold tracking-tighter uppercase m-0">
+          <div className="overflow-hidden flex items-end">
+            <h2 className="typography-text text-[var(--color-accent-cream)] text-[12vw] leading-[0.8] font-display font-bold tracking-normal uppercase m-0">
               BUILDING
             </h2>
+            <div className="hidden xl:block text-left relative ml-8 mb-3">
+              <p className="typography-text text-[var(--color-accent-cream)] font-sans font-bold text-sm tracking-widest uppercase leading-tight">Impact</p>
+              <p className="typography-text text-[var(--color-accent-cream)] font-sans font-bold text-sm tracking-widest uppercase leading-tight">Driven</p>
+            </div>
           </div>
-          <div className="overflow-hidden">
-            <h2 className="typography-text text-[#e3dcd1] text-[15vw] leading-[0.8] font-display font-bold tracking-tighter uppercase m-0">
+          <div className="overflow-hidden flex items-start">
+            <h2 className="typography-text text-[var(--color-accent-cream)] text-[15vw] leading-[0.8] font-display font-bold tracking-normal uppercase m-0">
               WEBSITES
             </h2>
+            <div className="hidden lg:block text-left relative ml-8 mt-5">
+              <p className="typography-text text-[var(--color-accent-cream)] font-sans font-bold text-sm tracking-widest uppercase leading-tight">Digital</p>
+              <p className="typography-text text-[var(--color-accent-cream)] font-sans font-bold text-sm tracking-widest uppercase leading-tight">Craftsmanship</p>
+            </div>
           </div>
           <div className="overflow-hidden flex items-start">
              <div className="hidden md:block text-left relative mt-4 mr-8">
-                <p className="typography-text text-[#e3dcd1] font-sans font-bold text-sm tracking-widest uppercase leading-tight">Elevating</p>
-                <p className="typography-text text-[#e3dcd1] font-sans font-bold text-sm tracking-widest uppercase leading-tight">Aesthetics</p>
+                <p className="typography-text text-[var(--color-accent-cream)] font-sans font-bold text-sm tracking-widest uppercase leading-tight">Elevating</p>
+                <p className="typography-text text-[var(--color-accent-cream)] font-sans font-bold text-sm tracking-widest uppercase leading-tight">Aesthetics</p>
              </div>
-             <h2 className="typography-text text-[#e3dcd1] text-[12vw] leading-[0.8] font-display font-bold tracking-tighter uppercase m-0">
+             <h2 className="typography-text text-[var(--color-accent-cream)] text-[12vw] leading-[0.8] font-display font-bold tracking-normal uppercase m-0">
                 WITH MEANING
              </h2>
+             <div className="hidden xl:block text-left relative ml-8 mt-5">
+                <p className="typography-text text-[var(--color-accent-cream)] font-sans font-bold text-sm tracking-widest uppercase leading-tight">User</p>
+                <p className="typography-text text-[var(--color-accent-cream)] font-sans font-bold text-sm tracking-widest uppercase leading-tight">Centric</p>
+             </div>
           </div>
         </div>
       </section>
@@ -226,7 +251,7 @@ export default function Landing() {
       </section>
 
       {/* Featured Works Section (Replaces 3D Gallery) */}
-      <section className="featured-works-section bg-[#f2efe9] text-[#111111] pt-24 pb-32 z-20 relative">
+      <section className="featured-works-section bg-[var(--color-accent-cream)] text-[var(--color-bg-primary)] pt-24 pb-32 z-20 relative">
         <div className="px-6 md:px-12 max-w-[1920px] mx-auto">
            <div className="w-full overflow-hidden flex justify-between tracking-tighter">
               <h1 className="text-[13vw] md:text-[14vw] leading-[0.8] font-display font-bold uppercase w-full flex justify-between">
@@ -236,50 +261,71 @@ export default function Landing() {
               </h1>
            </div>
            
-           <div className="w-full border-t border-[#111111] mt-8 pt-4 flex flex-col md:flex-row justify-between items-start md:items-center mb-16">
-              <p className="font-sans font-bold text-sm md:text-base uppercase tracking-widest mb-4 md:mb-0">
-                 Design Insights
-              </p>
-              <div className="flex flex-wrap gap-3">
-                 {["Conceptual", "Expressive", "Immersive"].map(tag => (
-                   <span key={tag} className="border border-[#111111] bg-[#111111] text-[#f2efe9] rounded-full px-4 py-1 text-xs uppercase tracking-widest font-bold">
-                      {tag}
-                   </span>
-                 ))}
-              </div>
-           </div>
+           <div className="w-full border-t border-[var(--color-bg-primary)] mt-8 mb-16"></div>
 
            <div className="flex flex-col gap-6 w-full">
-              <Link to="/work" className="block group relative w-full h-[50vh] md:h-[80vh] overflow-hidden cursor-pointer bg-[#e0ded8]">
-                 <img src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover mix-blend-multiply opacity-90 transition-transform duration-1000 group-hover:scale-105" alt="Home in a Hot Pot" />
+              <div 
+                onClick={() => openProject(1)} 
+                className="block group relative w-full h-[50vh] md:h-[80vh] overflow-hidden cursor-pointer bg-[var(--color-bg-tertiary)]"
+              >
+                 <img src="https://images.unsplash.com/photo-1543362906-acfc16c67564?auto=format&fit=crop&q=80&w=1600" className="w-full h-full object-cover mix-blend-multiply opacity-90 transition-transform duration-1000 group-hover:scale-105" alt="Calorie Tracker" />
                  <div className="absolute inset-0 bg-black/5 transition-opacity duration-500 group-hover:opacity-0" />
-              </Link>
+                 
+                 {/* Floating project details link profile */}
+                 <div className="absolute bottom-8 left-8 text-black z-10 select-none">
+                    <p className="font-sans font-black text-xs uppercase tracking-[0.2em] mb-1 opacity-60">PROJECT / 01</p>
+                    <h3 className="font-display font-black text-3xl md:text-5xl uppercase tracking-normal text-black transition-colors group-hover:text-[var(--color-accent-orange)]">CALORIE TRACKER</h3>
+                    <span className="inline-flex items-center gap-1.5 text-[9px] font-mono tracking-widest font-black uppercase mt-2 bg-[var(--color-accent-orange)] text-[var(--color-accent-cream)] px-3 py-1 rounded-full">
+                       <span>VIEW PROJECT</span> &bull; <span>CLICK CARD</span>
+                    </span>
+                 </div>
+              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-                 <Link to="/work" className="block group relative w-full h-[50vh] md:h-[60vh] overflow-hidden cursor-pointer bg-[#262626]">
-                    <img src="https://images.unsplash.com/photo-1622322300063-e380e2f5b4de?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover grayscale opacity-60 mix-blend-overlay transition-transform duration-1000 group-hover:scale-105" alt="Flow" />
+                 <div 
+                   onClick={() => openProject("flow")} 
+                   className="block group relative w-full h-[50vh] md:h-[60vh] overflow-hidden cursor-pointer bg-[var(--color-bg-tertiary)]"
+                 >
+                    <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover grayscale opacity-60 mix-blend-overlay transition-transform duration-1000 group-hover:scale-105" alt="ZenETH" />
+                    
+                    <div className="absolute top-6 right-6 z-10">
+                       <span className="inline-flex items-center gap-1.5 text-[9px] font-mono tracking-widest font-black uppercase bg-[var(--color-accent-orange)] text-black px-2.5 py-1 rounded-full">
+                          <span>PROJECT / 02</span>
+                       </span>
+                    </div>
+
                     <div className="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end text-white z-10 bg-gradient-to-t from-black/80 to-transparent">
-                       <span className="font-display font-bold text-5xl">02<span className="text-2xl ml-4 tracking-widest uppercase">Flow</span></span>
+                       <span className="font-display font-bold text-5xl">02<span className="text-2xl ml-4 tracking-widest uppercase">ZenETH</span></span>
                        <div className="flex flex-wrap gap-2 w-1/2 justify-end">
-                          {["Art Direction", "Concept", "Design"].map(t => (
+                          {["Web3", "Solidity", "DeFi"].map(t => (
                              <span key={t} className="bg-white text-black font-sans text-[10px] md:text-xs px-2 py-1 md:px-3 rounded-full font-bold uppercase tracking-widest">{t}</span>
                           ))}
                        </div>
                     </div>
-                 </Link>
+                 </div>
 
-                 <Link to="/work" className="block group relative w-full h-[50vh] md:h-[60vh] overflow-hidden cursor-pointer bg-[#e1e2d9]">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-105" alt="Community" />
-                    <div className="absolute top-0 left-0 w-full p-8 text-black z-10">
-                        <span className="font-sans font-bold text-xs tracking-widest uppercase border border-black rounded-full px-4 py-2 bg-white/50 backdrop-blur-sm">Find</span>
-                        <h3 className="font-display text-5xl mt-4 max-w-[50%]">YOUR COMMUNITY</h3>
+                 <div 
+                   onClick={() => openProject("community")} 
+                   className="block group relative w-full h-[50vh] md:h-[60vh] overflow-hidden cursor-pointer bg-[var(--color-bg-secondary)]"
+                 >
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-105" alt="Civic Sync" />
+                    
+                    <div className="absolute top-6 right-6 z-10">
+                       <span className="inline-flex items-center gap-1.5 text-[9px] font-mono tracking-widest font-black uppercase bg-[var(--color-accent-orange)] text-black px-2.5 py-1 rounded-full">
+                          <span>PROJECT / 03</span>
+                       </span>
                     </div>
-                 </Link>
+
+                    <div className="absolute top-0 left-0 w-full p-8 text-black z-10">
+                        <span className="font-sans font-bold text-xs tracking-widest uppercase border border-black rounded-full px-4 py-2 bg-white/50 backdrop-blur-sm">Civic Tech</span>
+                        <h3 className="font-display text-5xl mt-4 max-w-[70%] leading-none text-black font-black uppercase tracking-normal">CIVIC SYNC</h3>
+                    </div>
+                 </div>
               </div>
            </div>
 
            <div className="mt-24 flex justify-center">
-              <Link to="/work" className="group relative inline-flex items-center gap-4 text-[#111111] overflow-hidden border border-[#111111] rounded-full px-8 py-4 md:px-12 md:py-6 text-lg md:text-xl font-display font-bold uppercase tracking-widest hover:bg-[#111111] hover:text-[#f2efe9] transition-colors duration-500">
+              <Link to="/work" className="group relative inline-flex items-center gap-4 text-[var(--color-bg-primary)] overflow-hidden border border-[var(--color-bg-primary)] rounded-full px-8 py-4 md:px-12 md:py-6 text-lg md:text-xl font-display font-bold uppercase tracking-widest hover:bg-[var(--color-bg-primary)] hover:text-[var(--color-accent-cream)] transition-colors duration-500">
                  <span>View All Works</span>
                  <span className="w-2 h-2 rounded-full bg-[var(--color-accent-orange)] group-hover:scale-150 transition-transform duration-500"></span>
               </Link>
@@ -291,7 +337,7 @@ export default function Landing() {
       <Achievements />
 
       {/* Ending Section */}
-      <section ref={endRef} className="relative min-h-[80vh] w-full flex items-stretch bg-[#080808] z-20 text-[var(--color-accent-cream)] border-t border-white/5">
+      <section ref={endRef} className="relative min-h-[80vh] w-full flex items-stretch bg-[var(--color-bg-primary)] z-20 text-[var(--color-accent-cream)] border-t border-white/5">
         <div className="max-w-[1920px] mx-auto w-full grid grid-cols-1 md:grid-cols-2">
           
           {/* Left Column */}
@@ -300,20 +346,20 @@ export default function Landing() {
               <p className="end-text font-sans font-bold text-[10px] tracking-[0.3em] text-gray-500 uppercase mb-8">
                 Contact
               </p>
-              <h2 className="text-6xl md:text-[8vw] font-display font-bold uppercase leading-[0.85] tracking-tight mb-12">
+              <h2 className="text-6xl md:text-[8vw] font-display font-bold uppercase leading-[0.85] tracking-normal mb-12">
                 <div className="overflow-hidden"><span className="block end-text">Let's</span></div>
                 <div className="overflow-hidden"><span className="block end-text">Work</span></div>
-                <div className="overflow-hidden"><span className="block end-text text-[#333333]">Together</span></div>
+                <div className="overflow-hidden"><span className="block end-text text-[var(--color-accent-gray)]">Together</span></div>
               </h2>
               <p className="end-text text-gray-400 font-sans text-lg md:text-xl max-w-md leading-relaxed font-light mb-16">
                 Have a project in mind? Looking for a partner to help build your next big idea? I'm always open to discussing new opportunities and challenges.
               </p>
               
               <div className="end-text flex gap-4">
-                <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-transparent">
+                <a href="https://github.com/Vedantt56" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-transparent">
                   <Github className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-transparent">
+                <a href="https://www.linkedin.com/in/vedant-vaibhav-b9b48b35b/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-transparent">
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-transparent">
@@ -334,7 +380,7 @@ export default function Landing() {
                <p className="font-sans font-bold text-[10px] tracking-[0.3em] text-gray-500 uppercase mb-4">
                  Drop me a line
                </p>
-               <a href="mailto:vedantvaibhav28@gmail.com" className="group text-3xl md:text-5xl font-display font-bold uppercase tracking-tight hover:text-[var(--color-accent-orange)] transition-colors mb-8 break-all">
+               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vedantvaibhav28@gmail.com" target="_blank" rel="noopener noreferrer" className="group text-3xl md:text-5xl font-display font-bold uppercase tracking-normal hover:text-[var(--color-accent-orange)] transition-colors mb-8 break-all">
                   <span className="block">vedantvaibhav28</span>
                   <span className="block text-gray-500 group-hover:text-[var(--color-accent-orange)]/70 transition-colors">@gmail.com</span>
                </a>
@@ -352,6 +398,11 @@ export default function Landing() {
           </div>
         </div>
       </section>
+      <ProjectDetailOverlay 
+        project={selectedProject} 
+        isOpen={isOverlayOpen} 
+        onClose={() => setIsOverlayOpen(false)} 
+      />
     </main>
   );
 }

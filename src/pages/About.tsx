@@ -33,7 +33,7 @@ export default function About() {
             <span>ABOUT</span>
             <div className="h-[1px] flex-1 bg-gray-500/30"></div>
           </div>
-          <h1 ref={titleRef} className="text-6xl md:text-8xl font-display font-bold uppercase tracking-tight text-[var(--color-accent-cream)] mb-10 about-fade-up leading-none">
+          <h1 ref={titleRef} className="text-6xl md:text-8xl font-display font-bold uppercase tracking-normal text-[var(--color-accent-cream)] mb-10 about-fade-up leading-none">
             ABOUT
           </h1>
           <div className="text-[var(--color-accent-cream)]/70 font-sans font-light tracking-wide leading-relaxed space-y-8 text-lg about-fade-up">
@@ -54,12 +54,12 @@ export default function About() {
           
           {/* Frontend */}
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start about-fade-up">
-            <div className="w-full lg:w-2/5 flex-shrink-0">
-              <h2 className="text-5xl md:text-6xl font-display font-black text-white/10 uppercase leading-[0.85]">
-                FRONTEN<br className="hidden lg:block"/>D
+            <div className="w-full lg:w-[40%] lg:-ml-16 flex-shrink-0">
+              <h2 className="text-5xl md:text-6xl font-display font-black text-white/10 uppercase leading-[0.85] tracking-wide whitespace-nowrap">
+                FRONTEND
               </h2>
             </div>
-            <div className="w-full lg:w-3/5 grid grid-cols-2 gap-y-10 gap-x-6">
+            <div className="w-full lg:w-[60%] grid grid-cols-2 gap-y-10 gap-x-6">
               <TechItem 
                 icon={<div className="bg-[#f7df1e] text-black font-bold w-full h-full flex items-center justify-center text-[10px]">JS</div>} 
                 name="JAVASCRIPT" 
@@ -81,12 +81,12 @@ export default function About() {
 
           {/* Backend */}
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start about-fade-up">
-            <div className="w-full lg:w-2/5 flex-shrink-0">
-              <h2 className="text-5xl md:text-6xl font-display font-black text-white/10 uppercase leading-[0.85]">
+            <div className="w-full lg:w-[40%] lg:-ml-16 flex-shrink-0">
+              <h2 className="text-5xl md:text-6xl font-display font-black text-white/10 uppercase leading-[0.85] tracking-wide whitespace-nowrap">
                 BACKEND
               </h2>
             </div>
-            <div className="w-full lg:w-3/5 grid grid-cols-2 gap-y-10 gap-x-6">
+            <div className="w-full lg:w-[60%] grid grid-cols-2 gap-y-10 gap-x-6">
               <TechItem 
                 icon={<svg viewBox="0 0 24 24" className="w-full h-full text-[#339933] fill-current"><path d="M11.874 0L1.75 5.867v11.731l10.124 5.867 10.125-5.867V5.867L11.874 0zm7.842 16.368l-7.842 4.542-7.84-4.542V7.29l7.84-4.54 7.842 4.54v9.078z"/><path d="M11.874 18.04l-5.632-3.262v-6.52l5.632-3.263 5.63 3.263v6.52l-5.63 3.262z"/></svg>} 
                 name="NODE.JS" 
@@ -104,12 +104,12 @@ export default function About() {
 
           {/* Database */}
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start about-fade-up">
-            <div className="w-full lg:w-2/5 flex-shrink-0">
-              <h2 className="text-5xl md:text-6xl font-display font-black text-white/10 uppercase leading-[0.85]">
-                DATABAS<br className="hidden lg:block"/>E
+            <div className="w-full lg:w-[40%] lg:-ml-16 flex-shrink-0">
+              <h2 className="text-5xl md:text-6xl font-display font-black text-white/10 uppercase leading-[0.85] tracking-wide whitespace-nowrap">
+                DATABASE
               </h2>
             </div>
-            <div className="w-full lg:w-3/5 grid grid-cols-2 gap-y-10 gap-x-6">
+            <div className="w-full lg:w-[60%] grid grid-cols-2 gap-y-10 gap-x-6">
               <TechItem 
                 icon={<svg viewBox="0 0 24 24" className="w-full h-full text-[#47A248] fill-current"><path d="M11.513 18.674c.264.444.693 1.054 1.137 1.259.083-.418.14-1.229.136-1.782l-.008-6.196c.01-1.611 1.042-3.834 1.626-6.136C14.773 4.394 13.57 0 11.758 0c-1.883 0-3.056 4.382-2.735 5.76.602 2.25 1.581 4.508 1.615 6.183l.033 6.13-.01.523c.094.041.525.295.852.078M11.66 24V19.782h.38V24z"/></svg>} 
                 name="MONGODB" 
@@ -119,12 +119,12 @@ export default function About() {
 
           {/* Tools */}
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start about-fade-up">
-            <div className="w-full lg:w-2/5 flex-shrink-0">
-              <h2 className="text-5xl md:text-6xl font-display font-black text-white/10 uppercase leading-[0.85]">
+            <div className="w-full lg:w-[40%] lg:-ml-16 flex-shrink-0">
+              <h2 className="text-5xl md:text-6xl font-display font-black text-white/10 uppercase leading-[0.85] tracking-wide whitespace-nowrap">
                 TOOLS
               </h2>
             </div>
-            <div className="w-full lg:w-3/5 grid grid-cols-2 gap-y-10 gap-x-6">
+            <div className="w-full lg:w-[60%] grid grid-cols-2 gap-y-10 gap-x-6">
               <TechItem 
                 icon={<svg viewBox="0 0 24 24" className="w-full h-full text-[#F05032] fill-current"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.888.441.516.515.658 1.258.438 1.9l2.738 2.739c.641-.218 1.383-.075 1.898.44.755.755.755 1.98 0 2.735-.755.755-1.98.755-2.735 0-.518-.518-.66-1.261-.439-1.905l-2.73-2.73v4.61c.204.2.35.452.417.729.155.642-.04 1.32-.516 1.796-.755.755-1.98.755-2.735 0-.755-.755-.755-1.98 0-2.735.476-.476 1.155-.672 1.797-.516.275.067.525.211.725.414V7.55c-.201-.205-.353-.457-.42-.738-.118-.492 0-1.01.321-1.428L4.85 2.624.45 7.025c-.603.603-.603 1.582 0 2.188l10.48 10.48c.603.604 1.582.604 2.188 0l10.428-10.43c.604-.603.604-1.582 0-2.188z"/></svg>} 
                 name="GIT" 

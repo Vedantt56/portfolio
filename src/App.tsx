@@ -11,19 +11,16 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Landing from "./pages/Landing";
 import Work from "./pages/Work";
 import Navigation from "./components/Navigation";
+import ScrollProgressBar from "./components/ScrollProgressBar";
 import { AnimatePresence, motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
+function AnimatedPage({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-}
+  }, []);
 
-function AnimatedPage({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -75,7 +72,7 @@ export default function App() {
 
   return (
     <Router>
-      <ScrollToTop />
+      <ScrollProgressBar />
       <div className="relative min-h-screen bg-[var(--color-bg-primary)] text-[var(--color-accent-cream)] font-sans antialiased selection:bg-[var(--color-accent-orange)] selection:text-[var(--color-bg-primary)]">
         <Navigation />
         <PageTransition />

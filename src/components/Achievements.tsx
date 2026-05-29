@@ -36,7 +36,7 @@ export default function Achievements() {
   ];
 
   return (
-    <section ref={containerRef} className="w-full bg-[#080808] py-24 md:py-32 px-6 md:px-12 border-t border-white/5 relative z-20">
+    <section ref={containerRef} className="w-full bg-[var(--color-bg-primary)] py-24 md:py-32 px-6 md:px-12 border-t border-white/5 relative z-20">
       <div className="max-w-[1920px] mx-auto w-full">
         
         {/* Credentials & Certifications Section Header */}
@@ -44,7 +44,7 @@ export default function Achievements() {
           <p className="font-sans font-bold text-[10px] tracking-[0.3em] text-gray-500 uppercase mb-4">
             VERIFIED CREDENTIALS
           </p>
-          <h2 className="text-4xl md:text-7xl lg:text-8xl font-display font-black italic uppercase leading-[0.85] tracking-tighter text-[var(--color-accent-cream)] mb-6">
+          <h2 className="text-4xl md:text-7xl lg:text-8xl font-display font-black italic uppercase leading-[0.85] tracking-normal text-[var(--color-accent-cream)] mb-6">
             BADGES & CERTIFICATIONS
           </h2>
           <p className="text-gray-400 font-sans text-lg md:text-xl max-w-2xl font-light leading-relaxed">
@@ -57,7 +57,7 @@ export default function Achievements() {
           {credentials.map((cred, index) => (
             <div 
               key={index} 
-              className="group bg-[#0b0c0f] border border-white/5 hover:border-white/10 rounded-2xl p-8 flex flex-col justify-between transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+              className="group bg-[var(--color-bg-tertiary)] border border-white/5 hover:border-white/10 rounded-2xl p-8 flex flex-col justify-between transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
             >
               <div>
                 {/* Badge Visual Section */}
