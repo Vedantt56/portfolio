@@ -5,9 +5,9 @@ import ProjectDetailOverlay from "../components/ProjectDetailOverlay";
 import { projectsData, Project } from "../data/projectsData";
 
 const projects = [
-  { id: 1, title: "CALORIE TRACKER", category: "Full-Stack Dev", image: "https://images.unsplash.com/photo-1543362906-acfc16c67564?auto=format&fit=crop&q=80&w=1600" },
-  { id: "flow", title: "ZENETH", category: "Web3/Blockchain", image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&q=80&w=1200" },
-  { id: "community", title: "CIVIC SYNC", category: "Civic Tech Hub", image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200" },
+  { id: 1, title: "CALORIE TRACKER", category: "Full-Stack Dev", image: "/caltrack-cover.png" },
+  { id: "flow", title: "ZENETH", category: "Web3/Blockchain", image: "/zeneth-cover.png" },
+  { id: "community", title: "CIVIC SYNC", category: "Civic Tech Hub", image: "/civicsync-cover.png" },
 ];
 
 export default function Work() {
@@ -58,7 +58,7 @@ export default function Work() {
       }, "+=0.1")
       // 3. Slide the orange top background up by shrinking its height
       .to(".work-top-section", {
-        height: "25vh",
+        height: "30vh",
         duration: 0.8,
         ease: "power4.inOut"
       }, "<")
@@ -140,7 +140,7 @@ export default function Work() {
           rotateX: -normalized * 80, // fold backwards
           scaleY: 1 - (normalized * 0.3), // slightly compress
           y: normalized * -20, // lift slightly
-          color: "#ffffff",
+          color: "var(--color-accent-gray)",
           duration: 0.4,
           ease: "power2.out",
           overwrite: "auto"
@@ -172,7 +172,7 @@ export default function Work() {
   };
 
   return (
-    <main ref={mainRef} className="w-full h-screen bg-[var(--color-accent-orange)] relative flex flex-col overflow-hidden">
+    <main ref={mainRef} className="w-full h-screen bg-[var(--color-accent-orange)] text-[var(--color-bg-primary)] relative flex flex-col overflow-hidden">
       
       {/* Top Section matching the screenshot */}
       <section className="work-top-section bg-[var(--color-accent-orange)] flex-shrink-0 w-full px-6 md:px-12 pb-8 flex flex-col justify-end z-20 border-b border-[var(--color-bg-primary)]/10 origin-top">
@@ -256,15 +256,15 @@ export default function Work() {
                           isActive ? "scale-105" : "scale-100"
                         )}
                       />
-                      {/* Interactive hover details cue overlay */}
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 md:p-8">
-                         <p className="font-mono text-xs text-[var(--color-accent-orange)] uppercase tracking-widest mb-1">
-                            Curated Project / 0{project.id}
+                      {/* Interactive details cue overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent transition-opacity duration-300 flex flex-col justify-end p-6 md:p-8">
+                         <p className="font-mono text-xs text-[var(--color-accent-orange)] uppercase tracking-widest mb-1 shadow-black drop-shadow-md">
+                            Curated Project / 0{idx + 1}
                           </p>
-                          <h4 className="font-display font-black text-2xl md:text-3xl text-white tracking-normal uppercase leading-none">
+                          <h4 className="font-display font-black text-2xl md:text-3xl text-[var(--color-accent-cream)] tracking-normal uppercase leading-none shadow-black drop-shadow-lg transition-colors group-hover:text-white">
                              {project.title}
                           </h4>
-                          <span className="inline-flex max-w-fit items-center gap-1.5 text-[9px] font-mono tracking-widest font-black uppercase mt-3 bg-[var(--color-accent-orange)] text-black px-2.5 py-1 rounded-full">
+                          <span className="inline-flex max-w-fit items-center gap-1.5 text-[9px] font-mono tracking-widest font-black uppercase mt-3 bg-black/50 backdrop-blur-sm border border-[var(--color-accent-orange)]/50 text-[var(--color-accent-orange)] px-2.5 py-1 rounded-full group-hover:bg-[var(--color-accent-orange)] group-hover:text-black transition-all">
                              <span>OPEN PROJECT</span>
                           </span>
                       </div>
@@ -289,7 +289,7 @@ export default function Work() {
                     i === activeIndex ? "text-[var(--color-accent-cream)] scale-125" : "text-[var(--color-accent-gray)] opacity-50"
                   )}
                 >
-                  {p.id}
+                  0{i + 1}
                 </span>
               ))}
            </div>

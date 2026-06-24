@@ -9,13 +9,17 @@ const navItems = [
 
 export default function Navigation() {
   const location = useLocation();
+  const isWorkPage = location.pathname === "/work";
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 mix-blend-difference pointer-events-auto">
-      <div className="flex justify-between items-center px-6 md:px-12 py-8 max-w-[1920px] mx-auto text-[var(--color-accent-cream)]">
-        <Link to="/" className="text-xl md:text-2xl font-display uppercase tracking-widest font-semibold inline-block relative overflow-hidden group">
-          <span className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">V. Vaibhav</span>
-          <span className="inline-block absolute left-0 top-0 translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-y-0 text-[var(--color-accent-orange)]">V. Vaibhav</span>
+      <div className="flex justify-between items-center px-6 md:px-12 py-5 md:py-6 max-w-[1920px] mx-auto">
+        <Link 
+          to="/" 
+          className="text-xl md:text-2xl font-display uppercase tracking-widest font-semibold inline-block relative overflow-hidden group text-[var(--color-accent-cream)]"
+        >
+          <span className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full"></span>
+          <span className="inline-block absolute left-0 top-0 translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-y-0 text-[var(--color-accent-orange)]"></span>
         </Link>
         <ul className="flex gap-8 items-center">
           {navItems.map((item) => {

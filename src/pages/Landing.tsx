@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
-import { MoveRight, Github, Linkedin, Twitter, Instagram, Mail } from "lucide-react";
+import { MoveRight, Github, Linkedin, Mail } from "lucide-react";
 import About from "./About";
 import Achievements from "../components/Achievements";
 import ProjectDetailOverlay from "../components/ProjectDetailOverlay";
@@ -134,12 +134,6 @@ export default function Landing() {
         <a href="https://www.linkedin.com/in/vedant-vaibhav-b9b48b35b/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
           <Linkedin className="w-5 h-5" />
         </a>
-        <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
-          <Twitter className="w-5 h-5" />
-        </a>
-        <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
-          <Instagram className="w-5 h-5" />
-        </a>
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vedantvaibhav28@gmail.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-black/50 backdrop-blur-sm">
           <Mail className="w-5 h-5" />
         </a>
@@ -153,7 +147,7 @@ export default function Landing() {
         <div className="max-w-[1920px] mx-auto w-full z-10 flex flex-col gap-6">
           <h1 ref={nameRef} className="flex flex-col text-7xl md:text-[11rem] lg:text-[14rem] leading-[0.85] font-display font-bold tracking-normal uppercase text-[var(--color-accent-cream)]">
             <div className="overflow-hidden pb-4"><span className="hero-text-line block">VEDANT</span></div>
-            <div className="overflow-hidden pb-4"><span className="hero-text-line block pl-[8vw] md:pl-[12vw] text-[var(--color-accent-orange)]">VAIBHAV</span></div>
+            <div className="overflow-hidden pb-4"><span className="hero-text-line block pl-[8vw] md:pl-[12vw] text-[var(--color-accent-orange)]">PORTFOLIO</span></div>
           </h1>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mt-4">
             <p ref={subtitleRef} className="text-xl md:text-3xl max-w-xl font-sans font-light tracking-wide text-[var(--color-accent-cream)]">
@@ -268,14 +262,14 @@ export default function Landing() {
                 onClick={() => openProject(1)} 
                 className="block group relative w-full h-[50vh] md:h-[80vh] overflow-hidden cursor-pointer bg-[var(--color-bg-tertiary)]"
               >
-                 <img src="https://images.unsplash.com/photo-1543362906-acfc16c67564?auto=format&fit=crop&q=80&w=1600" className="w-full h-full object-cover mix-blend-multiply opacity-90 transition-transform duration-1000 group-hover:scale-105" alt="Calorie Tracker" />
-                 <div className="absolute inset-0 bg-black/5 transition-opacity duration-500 group-hover:opacity-0" />
+                 <img src="/caltrack-cover.png" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Calorie Tracker" />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent transition-opacity duration-500" />
                  
                  {/* Floating project details link profile */}
-                 <div className="absolute bottom-8 left-8 text-black z-10 select-none">
-                    <p className="font-sans font-black text-xs uppercase tracking-[0.2em] mb-1 opacity-60">PROJECT / 01</p>
-                    <h3 className="font-display font-black text-3xl md:text-5xl uppercase tracking-normal text-black transition-colors group-hover:text-[var(--color-accent-orange)]">CALORIE TRACKER</h3>
-                    <span className="inline-flex items-center gap-1.5 text-[9px] font-mono tracking-widest font-black uppercase mt-2 bg-[var(--color-accent-orange)] text-[var(--color-accent-cream)] px-3 py-1 rounded-full">
+                 <div className="absolute bottom-8 left-8 text-[var(--color-accent-cream)] z-10 select-none drop-shadow-lg">
+                    <p className="font-sans font-black text-xs uppercase tracking-[0.2em] mb-1 opacity-80">PROJECT / 01</p>
+                    <h3 className="font-display font-black text-3xl md:text-5xl uppercase tracking-normal transition-colors group-hover:text-[var(--color-accent-orange)]">CALORIE TRACKER</h3>
+                    <span className="inline-flex items-center gap-1.5 text-[9px] font-mono tracking-widest font-black uppercase mt-2 bg-[var(--color-accent-orange)] text-[var(--color-bg-primary)] px-3 py-1 rounded-full shadow-lg">
                        <span>VIEW PROJECT</span> &bull; <span>CLICK CARD</span>
                     </span>
                  </div>
@@ -286,21 +280,15 @@ export default function Landing() {
                    onClick={() => openProject("flow")} 
                    className="block group relative w-full h-[50vh] md:h-[60vh] overflow-hidden cursor-pointer bg-[var(--color-bg-tertiary)]"
                  >
-                    <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover grayscale opacity-60 mix-blend-overlay transition-transform duration-1000 group-hover:scale-105" alt="ZenETH" />
+                    <img src="/zeneth-cover.png" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="ZenETH" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent transition-opacity duration-500" />
                     
-                    <div className="absolute top-6 right-6 z-10">
-                       <span className="inline-flex items-center gap-1.5 text-[9px] font-mono tracking-widest font-black uppercase bg-[var(--color-accent-orange)] text-black px-2.5 py-1 rounded-full">
-                          <span>PROJECT / 02</span>
-                       </span>
-                    </div>
-
-                    <div className="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end text-white z-10 bg-gradient-to-t from-black/80 to-transparent">
-                       <span className="font-display font-bold text-5xl">02<span className="text-2xl ml-4 tracking-widest uppercase">ZenETH</span></span>
-                       <div className="flex flex-wrap gap-2 w-1/2 justify-end">
-                          {["Web3", "Solidity", "DeFi"].map(t => (
-                             <span key={t} className="bg-white text-black font-sans text-[10px] md:text-xs px-2 py-1 md:px-3 rounded-full font-bold uppercase tracking-widest">{t}</span>
-                          ))}
-                       </div>
+                    <div className="absolute bottom-8 left-8 text-[var(--color-accent-cream)] z-10 select-none drop-shadow-lg">
+                        <p className="font-sans font-black text-xs uppercase tracking-[0.2em] mb-1 opacity-80">PROJECT / 02</p>
+                        <h3 className="font-display font-black text-3xl md:text-5xl uppercase tracking-normal transition-colors group-hover:text-[var(--color-accent-orange)]">ZENETH</h3>
+                        <span className="inline-flex items-center gap-1.5 text-[9px] font-mono tracking-widest font-black uppercase mt-2 bg-[var(--color-accent-orange)] text-[var(--color-bg-primary)] px-3 py-1 rounded-full shadow-lg">
+                           <span>VIEW PROJECT</span> &bull; <span>CLICK CARD</span>
+                        </span>
                     </div>
                  </div>
 
@@ -308,19 +296,17 @@ export default function Landing() {
                    onClick={() => openProject("community")} 
                    className="block group relative w-full h-[50vh] md:h-[60vh] overflow-hidden cursor-pointer bg-[var(--color-bg-secondary)]"
                  >
-                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-105" alt="Civic Sync" />
+                    <img src="/civicsync-cover.png" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Civic Sync" referrerPolicy="no-referrer" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent transition-opacity duration-500" />
                     
-                    <div className="absolute top-6 right-6 z-10">
-                       <span className="inline-flex items-center gap-1.5 text-[9px] font-mono tracking-widest font-black uppercase bg-[var(--color-accent-orange)] text-black px-2.5 py-1 rounded-full">
-                          <span>PROJECT / 03</span>
-                       </span>
+                    <div className="absolute bottom-8 left-8 text-[var(--color-accent-cream)] z-10 select-none drop-shadow-lg">
+                        <p className="font-sans font-black text-xs uppercase tracking-[0.2em] mb-1 opacity-80">PROJECT / 03</p>
+                        <h3 className="font-display font-black text-3xl md:text-5xl uppercase tracking-normal transition-colors group-hover:text-[var(--color-accent-orange)]">CIVIC SYNC</h3>
+                        <span className="inline-flex items-center gap-1.5 text-[9px] font-mono tracking-widest font-black uppercase mt-2 bg-[var(--color-accent-orange)] text-[var(--color-bg-primary)] px-3 py-1 rounded-full shadow-lg">
+                           <span>VIEW PROJECT</span> &bull; <span>CLICK CARD</span>
+                        </span>
                     </div>
-
-                    <div className="absolute top-0 left-0 w-full p-8 text-black z-10">
-                        <span className="font-sans font-bold text-xs tracking-widest uppercase border border-black rounded-full px-4 py-2 bg-white/50 backdrop-blur-sm">Civic Tech</span>
-                        <h3 className="font-display text-5xl mt-4 max-w-[70%] leading-none text-black font-black uppercase tracking-normal">CIVIC SYNC</h3>
-                    </div>
-                 </div>
+                  </div>
               </div>
            </div>
 
@@ -362,8 +348,8 @@ export default function Landing() {
                 <a href="https://www.linkedin.com/in/vedant-vaibhav-b9b48b35b/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-transparent">
                   <Linkedin className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-transparent">
-                  <Twitter className="w-5 h-5" />
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vedantvaibhav28@gmail.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all bg-transparent">
+                  <Mail className="w-5 h-5" />
                 </a>
               </div>
             </div>

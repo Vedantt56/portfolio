@@ -111,7 +111,7 @@ export default function ProjectDetailOverlay({ project, isOpen, onClose }: Proje
         {/* Floating Close Button */}
         <button
           onClick={onClose}
-          className="fixed top-6 right-6 md:top-8 md:right-8 z-[110] bg-[var(--color-accent-cream)] text-black hover:bg-[var(--color-accent-orange)] hover:text-white rounded-full p-3.5 flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
+          className="fixed top-6 right-6 md:top-8 md:right-8 z-[110] bg-[var(--color-accent-cream)] text-black hover:bg-[var(--color-accent-orange)] hover:text-[var(--color-bg-primary)] rounded-full p-3.5 flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
           aria-label="Close project"
         >
           <X className="w-5 h-5 stroke-[2.5]" />
@@ -130,18 +130,7 @@ export default function ProjectDetailOverlay({ project, isOpen, onClose }: Proje
                 {project.title}
               </h1>
 
-              {/* VIEW LIVE SITE link as shown in design */}
-              {project.liveLink && (
-                <a
-                  href={project.liveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-1.5 border-b border-white/20 hover:border-white pb-0.5 mt-4 text-[10px] md:text-xs font-mono tracking-[0.2em] font-black uppercase text-gray-400 hover:text-white transition-all w-fit"
-                >
-                  <span>VIEW LIVE SITE</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
-              )}
+
 
               {/* Technical Specifications Rows with Thin Horizontal Dividers */}
               <div className="mt-12 space-y-6">
@@ -189,17 +178,7 @@ export default function ProjectDetailOverlay({ project, isOpen, onClose }: Proje
                   </a>
                 )}
 
-                {/* Styled bold "LIVE DEMO" button */}
-                {project.liveLink && (
-                  <a
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-white text-black hover:bg-[var(--color-accent-orange)] hover:text-white px-7 py-2.5 rounded-full text-xs font-mono font-black tracking-widest uppercase transition-all duration-300 hover:scale-102 flex items-center justify-center"
-                  >
-                    LIVE DEMO
-                  </a>
-                )}
+
 
               </div>
 
@@ -208,6 +187,17 @@ export default function ProjectDetailOverlay({ project, isOpen, onClose }: Proje
             {/* ---------------- RIGHT DESCRIPTION COLUMN ---------------- */}
             <div className="lg:col-span-7 flex flex-col text-left">
               
+              {/* Detail Mock Image */}
+              {project.mockImage && (
+                <div className="mb-12 w-full shadow-2xl relative overflow-hidden rounded-xl bg-[var(--color-bg-secondary)]">
+                  <img 
+                    src={project.mockImage} 
+                    alt={`${project.title} mock display`} 
+                    className="w-full h-auto object-cover opacity-90 transition-opacity duration-500 hover:opacity-100" 
+                  />
+                </div>
+              )}
+
               {/* Huge bold uppercase block description text */}
               <h2 className="text-3xl md:text-4xl lg:text-[3.2vw] xl:text-[3.4vw] font-display font-medium leading-[1.05] tracking-normal text-[var(--color-accent-cream)] uppercase break-normal">
                 {project.description}
