@@ -243,23 +243,23 @@ export default function Work() {
                   key={project.id} 
                   onClick={() => openProject(project.id)}
                   className={cn(
-                    "project-card snap-center relative w-[75vw] md:w-[45vw] h-[45vh] md:h-[48vh] flex-shrink-0 mx-3 cursor-pointer group transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]",
+                    "project-card snap-center relative w-[75vw] md:w-[45vw] h-[45vh] md:h-[48vh] flex-shrink-0 mx-3 cursor-pointer group transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] pointer-events-auto",
                     isActive ? "scale-100 opacity-100 z-10" : "scale-90 opacity-40 z-0 grayscale"
                   )}
                 >
-                  <div className="w-full h-full relative overflow-hidden bg-zinc-900 border border-white/5">
+                  <div className="w-full h-full relative overflow-hidden bg-zinc-900 border border-white/5 cursor-pointer pointer-events-auto">
                       <img 
                         src={project.image}
                         alt={project.title}
                         className={cn(
-                          "w-full h-full object-cover transition-transform duration-1000",
+                          "w-full h-full object-cover transition-transform duration-1000 pointer-events-none",
                           isActive ? "scale-105" : "scale-100"
                         )}
                       />
                       {/* Interactive details cue overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent transition-opacity duration-300 flex flex-col justify-end p-6 md:p-8">
                          <p className="font-mono text-xs text-[var(--color-accent-orange)] uppercase tracking-widest mb-1 shadow-black drop-shadow-md">
-                            Curated Project / 0{idx + 1}
+                            Curated Project 
                           </p>
                           <h4 className="font-display font-black text-2xl md:text-3xl text-[var(--color-accent-cream)] tracking-normal uppercase leading-none shadow-black drop-shadow-lg transition-colors group-hover:text-white">
                              {project.title}
@@ -280,21 +280,8 @@ export default function Work() {
 
         {/* Fixed Footer Counter Overlay */}
         <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 z-20 flex flex-col justify-end text-[var(--color-accent-cream)] pointer-events-none">
-           <div className="flex justify-center items-center gap-4 mb-4">
-              {projects.map((p, i) => (
-                <span 
-                  key={p.id} 
-                  className={cn(
-                    "font-display font-bold text-2xl transition-colors duration-500",
-                    i === activeIndex ? "text-[var(--color-accent-cream)] scale-125" : "text-[var(--color-accent-gray)] opacity-50"
-                  )}
-                >
-                  0{i + 1}
-                </span>
-              ))}
-           </div>
            <div className="flex justify-between items-end w-full">
-               <span className="font-sans font-bold tracking-widest text-sm text-[var(--color-accent-gray)]">00:00:05</span>
+               <span className="font-sans font-bold tracking-widest text-sm text-[var(--color-accent-gray)]"></span>
                <div className="text-center absolute left-1/2 -translate-x-1/2">
                    <span className="font-sans font-bold tracking-widest text-sm text-[var(--color-accent-gray)]">
                       {activeIndex + 1}/{projects.length}
