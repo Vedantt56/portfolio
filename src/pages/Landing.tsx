@@ -147,7 +147,7 @@ export default function Landing() {
         <div className="max-w-[1920px] mx-auto w-full z-10 flex flex-col gap-6">
           <h1 ref={nameRef} className="flex flex-col text-7xl md:text-[11rem] lg:text-[14rem] leading-[0.85] font-display font-bold tracking-normal uppercase text-[var(--color-accent-cream)]">
             <div className="overflow-hidden pb-4"><span className="hero-text-line block">VEDANT</span></div>
-            <div className="overflow-hidden pb-4"><span className="hero-text-line block pl-[8vw] md:pl-[12vw] text-[var(--color-accent-orange)]">PORTFOLIO</span></div>
+            <div className="overflow-hidden pb-4"><span className="hero-text-line block pl-[8vw] md:pl-[12vw] text-[var(--color-accent-orange)]">VAIBHAV</span></div>
           </h1>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mt-4">
             <p ref={subtitleRef} className="text-xl md:text-3xl max-w-xl font-sans font-light tracking-wide text-[var(--color-accent-cream)]">
