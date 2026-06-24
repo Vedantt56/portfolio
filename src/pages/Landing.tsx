@@ -357,23 +357,18 @@ export default function Landing() {
           
           {/* Right Column */}
           <div className="p-12 md:p-24 flex flex-col justify-center">
-             <div className="w-full flex-1 border-b border-white/5 relative min-h-[30vh]">
-               <Mail className="absolute left-0 bottom-8 w-6 h-6 text-gray-500" />
-               <MoveRight className="absolute right-0 bottom-8 w-6 h-6 text-gray-500 -rotate-45" />
-             </div>
-             
-             <div className="pt-24 flex-1 flex flex-col justify-end">
+             <div className="flex flex-col justify-center h-full">
                <p className="font-sans font-bold text-[10px] tracking-[0.3em] text-gray-500 uppercase mb-4">
                  Drop me a line
                </p>
-               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vedantvaibhav28@gmail.com" target="_blank" rel="noopener noreferrer" className="group text-3xl md:text-5xl font-display font-bold uppercase tracking-normal hover:text-[var(--color-accent-orange)] transition-colors mb-8 break-all">
+               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vedantvaibhav28@gmail.com" target="_blank" rel="noopener noreferrer" className="group text-3xl md:text-5xl lg:text-6xl font-display font-bold uppercase tracking-normal hover:text-[var(--color-accent-orange)] transition-colors mb-8 break-all leading-tight">
                   <span className="block">vedantvaibhav28</span>
                   <span className="block text-gray-500 group-hover:text-[var(--color-accent-orange)]/70 transition-colors">@gmail.com</span>
                </a>
                
                <button 
                  onClick={() => navigator.clipboard.writeText('vedantvaibhav28@gmail.com')}
-                 className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors font-sans text-sm uppercase tracking-widest font-bold"
+                 className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors font-sans text-sm uppercase tracking-widest font-bold w-fit"
                >
                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
