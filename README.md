@@ -113,14 +113,6 @@ Future Improvements
 - CMS integration
 - Visitor analytics
 
----
-
-Connect With Me
-
-- LinkedIn: (Add your LinkedIn profile)
-- GitHub: https://github.com/Vedantt56
-- Portfolio: https://portfolio-sable-mu-4j9kykdi.vercel.app/
-
----
+--
 
 If you found this project interesting, consider giving it a star on GitHub.
