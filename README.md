@@ -1,118 +1,156 @@
-Personal Portfolio Website
+# Portfolio
 
-A modern, responsive portfolio website built to showcase my projects, technical skills, certifications, and development journey as a Software Engineering student and aspiring Full-Stack Developer.
+A personal portfolio built to showcase my work, technical skills, and development journey through an interactive and animation-driven user experience.
 
-Live Demo
+The website focuses on smooth navigation, immersive transitions, and detailed project presentations while maintaining responsive performance across devices.
 
-Portfolio:
-https://portfolio-sable-mu-4j9kykdi.vercel.app/
+**Live Demo**
 
----
-
-About
-
-This portfolio serves as my personal website, highlighting:
-
-- About Me
-- Technical Skills
-- Featured Projects
-- Certifications
-- Resume
-- Contact Information
-
-The website is designed with a focus on clean UI, responsiveness, smooth animations, and performance.
+https://portfolio-g3ysezw5h-vedantvaibhav28-1135s-projects.vercel.app/
 
 ---
 
-Features
+## Features
 
-- Responsive design for all screen sizes
-- Modern and minimal interface
-- Smooth animations and transitions
-- Project showcase
-- Skills section
-- Resume download
-- Contact section
-- Optimized performance
+- Responsive design for desktop and mobile
+- Smooth scrolling powered by Lenis
+- GSAP-based page and scroll animations
+- Framer Motion page transitions
+- Interactive project showcase
+- Dedicated project detail overlays
+- Skills and achievements section
+- Work page with curated project gallery
+- Contact and social links
 
 ---
 
-Tech Stack
+## Tech Stack
 
-Frontend
+### Frontend
 
-- React
+- React 19
 - TypeScript
-- Tailwind CSS
 - Vite
+- Tailwind CSS
 
-Deployment
+### Animation
+
+- GSAP
+- Framer Motion
+- Lenis
+
+### 3D
+
+- Three.js
+- React Three Fiber
+- Drei
+
+### Routing
+
+- React Router
+
+### Icons
+
+- Lucide React
+
+### Deployment
 
 - Vercel
 
 ---
 
-Project Structure
+## Project Structure
 
-portfolio/
-│
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── pages/
-│   ├── hooks/
-│   ├── lib/
-│   └── App.tsx
-│
-├── package.json
-├── vite.config.ts
-└── README.md
+```
+src/
+├── components/
+├── data/
+├── hooks/
+├── lib/
+├── pages/
+├── App.tsx
+└── main.tsx
+
+public/
+```
 
 ---
 
-Getting Started
+## Installation
 
-Clone the repository
+Clone the repository:
 
+```bash
 git clone https://github.com/Vedantt56/portfolio.git
+```
 
-Navigate to the project
+Move into the project directory:
 
+```bash
 cd portfolio
+```
 
-Install dependencies
+Install dependencies:
 
+```bash
 npm install
+```
 
-Start the development server
+Start the development server:
 
+```bash
 npm run dev
+```
 
 The application will be available at:
 
-http://localhost:5173
+```
+http://localhost:3000
+```
 
 ---
 
-Build for Production
+## Build
 
+Create a production build:
+
+```bash
 npm run build
+```
 
-To preview the production build locally:
+Preview the production build:
 
+```bash
 npm run preview
+```
 
 ---
 
-Future Improvements
+## Featured Projects
+
+The portfolio currently showcases projects including:
+
+- CalTrack
+- Zeneth
+- CivicSync
+
+Each project contains additional details presented through an interactive overlay rather than leaving the portfolio.
+
+---
+
+## Design Philosophy
+
+The portfolio was designed with an emphasis on motion and storytelling instead of static sections. Animations are used to guide the user through the content while keeping navigation intuitive and performance smooth.
+
+---
+
+## Future Improvements
 
 - Blog section
-- Dark/Light mode
-- Project filtering
-- CMS integration
-- Visitor analytics
+- Case studies for individual projects
+- Light/Dark theme toggle
+- More interactive visualizations
+- CMS support for project management
 
---
+---
 
-If you found this project interesting, consider giving it a star on GitHub.
