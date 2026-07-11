@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
-import { MoveRight, Github, Linkedin, Mail } from "lucide-react";
+import { MoveRight, Github, Linkedin, Mail, FileText, Download } from "lucide-react";
 import About from "./About";
 import Achievements from "../components/Achievements";
 import ProjectDetailOverlay from "../components/ProjectDetailOverlay";
@@ -147,7 +147,7 @@ export default function Landing() {
         <div className="max-w-[1920px] mx-auto w-full z-10 flex flex-col gap-6">
           <h1 ref={nameRef} className="flex flex-col text-7xl md:text-[11rem] lg:text-[14rem] leading-[0.85] font-display font-bold tracking-normal uppercase text-[var(--color-accent-cream)]">
             <div className="overflow-hidden pb-4"><span className="hero-text-line block">VEDANT</span></div>
-            <div className="overflow-hidden pb-4"><span className="hero-text-line block pl-[8vw] md:pl-[12vw] text-[var(--color-accent-orange)]">VAIBHAV</span></div>
+            <div className="overflow-hidden pb-4"><span className="hero-text-line block pl-[8vw] md:pl-[12vw] text-[var(--color-accent-orange)]">PORTFOLIO</span></div>
           </h1>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mt-4">
             <p ref={subtitleRef} className="text-xl md:text-3xl max-w-xl font-sans font-light tracking-wide text-[var(--color-accent-cream)]">
@@ -356,8 +356,39 @@ export default function Landing() {
           </div>
           
           {/* Right Column */}
-          <div className="p-12 md:p-24 flex flex-col justify-center">
-             <div className="flex flex-col justify-center h-full">
+          <div className="p-12 md:p-24 flex flex-col justify-between">
+             {/* Resume Card Block */}
+             <div className="mb-12 pb-12 border-b border-white/5">
+                <p className="font-sans font-bold text-[10px] tracking-[0.3em] text-gray-500 uppercase mb-4">
+                  Curriculum Vitae
+                </p>
+                <h3 className="text-3xl md:text-4xl font-display font-bold uppercase tracking-wide mb-4 text-[var(--color-accent-cream)]">
+                  My Resume
+                </h3>
+                <p className="text-gray-400 font-sans text-sm md:text-base max-w-md leading-relaxed mb-8">
+                  Computer Science undergrad specialized in full-stack engineering, blockchain (Solidity), and interactive UI development.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Link 
+                    to="/resume" 
+                    className="inline-flex items-center gap-3 bg-[var(--color-accent-orange)] text-[var(--color-bg-primary)] hover:bg-[var(--color-accent-cream)] hover:text-[var(--color-bg-primary)] transition-all px-6 py-3 rounded-full font-mono text-xs tracking-widest font-black uppercase shadow-lg"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span>View Resume</span>
+                  </Link>
+                  <Link 
+                    to="/resume?print=true" 
+                    target="_blank"
+                    className="inline-flex items-center gap-3 border border-white/20 hover:border-white hover:text-white text-gray-300 transition-all px-6 py-3 rounded-full font-mono text-xs tracking-widest font-black uppercase"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download PDF</span>
+                  </Link>
+                </div>
+             </div>
+
+             {/* Drop Me a Line Block */}
+             <div className="flex flex-col justify-center">
                <p className="font-sans font-bold text-[10px] tracking-[0.3em] text-gray-500 uppercase mb-4">
                  Drop me a line
                </p>
